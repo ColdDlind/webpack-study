@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   mode: "development", //打包模式   production development
   entry: "./src/index.js", //入口
@@ -22,12 +23,7 @@ module.exports = {
         //css-loader解决Import导入css模块，style-loader解决插入html中，
         test: /\.css$/,
         use: [
-          {
-            loader: "style-loader",
-            options: {
-              insertAt: "top" //插入自己写的style标签上面
-            }
-          },
+          MiniCssExtractPlugin.loader,
           {
             loader: "css-loader"
           }
@@ -36,12 +32,7 @@ module.exports = {
       {
         test: /\.less$/,
         use: [
-          {
-            loader: "style-loader",
-            options: {
-              insertAt: "top" //插入自己写的style标签上面
-            }
-          },
+          MiniCssExtractPlugin.loader,
           {
             loader: "css-loader"
           },
@@ -61,6 +52,10 @@ module.exports = {
         removeAttributeQuotes: true,
         collapseWhitespace: true
       }
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].[hash].css",
+      chunkFilename: "[id].css"
     })
   ]
 };
