@@ -4,7 +4,7 @@ module.exports = {
   entry: "./src/index.js", //入口
   output: {
     filename: "bundle.js", //打包后的文件
-    path: path.resolve(__dirname, "build") //路径为绝对路径
+    path: path.resolve(__dirname, "dist") //路径为绝对路径
   },
   devServer: {
     //webpack-dev-server配置
