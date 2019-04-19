@@ -1,6 +1,6 @@
 import "./index.css";
 import "./index.less";
-
+import "./b.js";
 console.log("first test");
 let fn = () => {
   console.log("1111111111111");
@@ -18,3 +18,12 @@ console.log(a.a);
 function log(target) {
   console.log(target);
 }
+
+function* geter() {
+  yield 1;
+  yield 2;
+}
+let test=geter()
+console.log(test.next());
+console.log(test.next());
+
