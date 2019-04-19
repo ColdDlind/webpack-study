@@ -28,4 +28,4 @@ let test = geter();
 console.log(test.next());
 console.log(test.next());
 
-console.log(["1", "2", "4"].include("a"));
+console.log(["1", "2", "4"].includes("a"));
