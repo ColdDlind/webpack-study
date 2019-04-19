@@ -1,8 +1,10 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const TerserJSPlugin = require("terser-webpack-plugin");
 module.exports = {
-  mode: "development", //打包模式   production development
+  mode: "production", //打包模式   production development
   entry: "./src/index.js", //入口
   output: {
     filename: "bundle.[hash:8].js", //打包后的文件  加hash
@@ -12,9 +14,12 @@ module.exports = {
     //webpack-dev-server配置
     port: 8090,
     progress: true,
-    contentBase: "./build",
+    contentBase: "./build"
     // open: true,
-    compress: true
+  },
+  optimization: {
+    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})]
+    //根模式有关，开发环境中不会压缩代码，生产环境中会压缩代码   注意：生产环境中JS代码默认压缩，但加入css压缩后，必须手动new TerserJSPlugin才会压缩
   },
   module: {
     //模块
@@ -27,7 +32,7 @@ module.exports = {
           {
             loader: "css-loader"
           },
-          "postcss-loader",
+          "postcss-loader"
         ]
       },
       {
