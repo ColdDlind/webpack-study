@@ -32,6 +32,23 @@ module.exports = {
             loader: "css-loader"
           }
         ]
+      },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: "style-loader",
+            options: {
+              insertAt: "top" //插入自己写的style标签上面
+            }
+          },
+          {
+            loader: "css-loader"
+          },
+          {
+            loader: "less-loader"
+          }
+        ]
       }
     ]
   },
