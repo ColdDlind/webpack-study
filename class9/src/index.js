@@ -1,6 +1,6 @@
 class Test {
   constructor() {
-    console.lo("test");
+    console.log("test11111");
   }
 }
 let test = new Test();

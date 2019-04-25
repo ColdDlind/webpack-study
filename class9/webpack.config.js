@@ -17,6 +17,13 @@ module.exports = {
     progress: true
     // open: true,
   },
+  watch: true, //打包后监控文件是否改变，若改变自己重新build
+  watchOptions: {
+    //监控的选项
+    poll: 1000, //每1秒监控一次
+    aggregateTimeout: 500, //防抖  防止一直更改文件时重新刷新
+    ignored: /node_modules/,  //不需要监控的文件
+  },
   module: {
     //模块
     rules: [
